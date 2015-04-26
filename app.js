@@ -1,25 +1,53 @@
 
 var i;
 var j;
+var k;
 var groupSet;
-var groupAdjustor = 1;
 var topNum = 10;
 var cohort = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne",
     "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve",
     "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
+var pplSelected;
+/* groupAdjustor = {
+
+}*/
 
 $(document).ready(function () {
+    $('.selectorField').on("click", ".selector", function() {
+        //adjust selected classes
+        $(this).siblings().removeClass("chosenSelector");
+        $(this).addClass("chosenSelector");
+        //clear any exsting groups/number selection
+        $(".groupField").empty();
+        $(".buttonField").children().removeClass("chosenNumber");
+        console.log($(".buttonfield"))
+        //Check button id, adjust groupAdjustor accordingly (1 for groups, calculate # groups from # people otherwise)
+        if ($(this).attr('id').indexOf("numPpl") != -1) {
+            pplSelected = true;
+            console.log("People has been selected");
+        }
+    });
+
     for (i = 2; i < topNum + 1; i++) {
         $(".buttonField").append("<div class='numberButton' id='number" + i + "'>" + i + "</div>");
         }
 
+
     $(".buttonField").on("click", ".numberButton", function() {
-        console.log($(this) + "button click worked");
-        for (i = 2; i < topNum + 2; i++) {
+        for (k = 2; k < topNum + 2; k++) {
             //ID string search from http://stackoverflow.com/a/640991/4318362
-            if ($(this).attr('id').indexOf(i) != -1) {
-                console.log("Holy shit this actually worked for " + i);
-                makeTeams(cohort, i);
+            if ($(this).attr('id').indexOf(k) != -1) {
+                $(this).siblings().removeClass("chosenNumber");
+                $(this).addClass("chosenNumber");
+                console.log("Holy shit this actually worked for " + k);
+                if (pplSelected) {
+                    numGroups = Math.ceil(cohort.length / k);
+                    console.log("numGroups adjusted")
+                } else {
+                    numGroups = k;
+                }
+                console.log("Number of groups: " + numGroups);
+                makeTeams(cohort, numGroups);
                 console.log("Group array: ", groupSet)
             }
         }

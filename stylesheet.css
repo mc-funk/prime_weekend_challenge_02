@@ -1,5 +1,36 @@
+body {
+    font-family: 'Oxygen', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 10px;
+    color: #2B2E2F;
+}
+
+.selectorField {
+    /*display: inline-block;*/
+    vertical-align: bottom;
+}
+
+.selector {
+    display: inline-block;
+    width: 250px;
+    height: 30px;
+    border-radius: 6px;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffffff;
+    background-color: #6495ed;
+    box-shadow: 3px 5px #27496d;
+}
+
+.chosenSelector {
+    margin-top: 3px;
+    background-color: #5179C1;
+    box-shadow: 2px 3px #27496d;
+}
 .buttonField {
-     display: inline-block;
+     /*display: inline-block;*/
  }
 
 .numberButton {
@@ -11,10 +42,17 @@
     margin: 10px;
     padding-left: auto;
     padding-right: auto;
-    background-color: #008b8b;
+    background-color: #00BDBD;
     color: #ffffff;
     font-size: 22px;
-    border-radius: 3px;
+    border-radius: 6px;
+    box-shadow: 2px 4px #006363;
+}
+
+.chosenNumber {
+    background-color: #008787;
+    box-shadow: 1px 3px #006363;
+    margin-top: 11px;
 }
 
 .groupField {
@@ -29,4 +67,5 @@
 
 .groupTitle {
     font-size: 20px;
+    color: #008787;
 }
