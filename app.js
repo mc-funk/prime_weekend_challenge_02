@@ -2,19 +2,20 @@
 var i;
 var j;
 var groupSet;
-var numNums = 5;
+var groupAdjustor = 1;
+var topNum = 10;
 var cohort = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne",
     "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve",
     "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
 
 $(document).ready(function () {
-    for (i = 2; i < numNums + 2; i++) {
+    for (i = 2; i < topNum + 1; i++) {
         $(".buttonField").append("<div class='numberButton' id='number" + i + "'>" + i + "</div>");
         }
 
     $(".buttonField").on("click", ".numberButton", function() {
         console.log($(this) + "button click worked");
-        for (i = 2; i < numNums + 2; i++) {
+        for (i = 2; i < topNum + 2; i++) {
             //ID string search from http://stackoverflow.com/a/640991/4318362
             if ($(this).attr('id').indexOf(i) != -1) {
                 console.log("Holy shit this actually worked for " + i);
