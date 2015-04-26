@@ -16,6 +16,7 @@ $(document).ready(function () {
         $(this).siblings().removeClass("chosenSelector");
         $(this).addClass("chosenSelector");
         //clear any exsting groups/number selection
+        $("#groupsHeader").hide();
         $(".groupField").empty();
         $(".buttonField").children().removeClass("chosenNumber");
         console.log($(".buttonfield"))
