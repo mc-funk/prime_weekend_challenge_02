@@ -1,5 +1,6 @@
 
 var i;
+var j;
 var groupSet;
 var numNums = 5;
 var cohort = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne",
@@ -9,36 +10,38 @@ var cohort = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne",
 $(document).ready(function () {
     for (i = 2; i < numNums + 2; i++) {
         $(".buttonField").append("<div class='numberButton' id='number" + i + "'>" + i + "</div>");
-        $(".groupField").append("<div class='groupBox' id='group" + i + "'></div>");
         }
-    });
 
     $(".buttonField").on("click", ".numberButton", function() {
         console.log($(this) + "button click worked");
         for (i = 2; i < numNums + 2; i++) {
+            //ID string search from http://stackoverflow.com/a/640991/4318362
             if ($(this).attr('id').indexOf(i) != -1) {
                 console.log("Holy shit this actually worked for " + i);
                 makeTeams(cohort, i);
+                console.log("Group array: ", groupSet)
             }
         }
+    });
 
-
-    /* if($('#mytable td:last-child').attr('id').indexOf('d') != -1) {
-     alert('found!');
-     }*/
-function makeTeams(array, numTeams) {
-    groupSet = [];
-    array = shuffleArray(array);
-    for (i = 0; i < numTeams; i++) {
-        groupSet.push([]);
+    function makeTeams(array, numTeams) {
+        groupSet = [];
+        $(".groupField").empty();
+        array = shuffleArray(array);
+        for (i = 0; i < numTeams; i++) {
+            groupSet.push([]);
+            $(".groupField").append("<div class='groupBox' id='group" + i + "'></div>");
+        }
+        for (i = 0; i < array.length; i++) {
+            cohortIndex = i % numTeams;
+            groupSet[cohortIndex].push(array[i]);
+        }
+        for (i = 0; i < groupSet.length; i++) {
+            for (j = 0; j < groupSet[i].length; j++) {
+                $('#group' + i).append("<p>" + groupSet[i][j] + "</p>");
+            }
+        }
     }
-    for (i = 0; i < array.length; i++) {
-        cohortIndex = i % numTeams;
-        groupSet[cohortIndex].push(array[i]);
-    }
-    return groupSet;
-}
-
 
 //shuffleArray function: implementation of Fisher-Yates shuffle algorithm
 //Found at: http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array

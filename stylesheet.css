@@ -5,9 +5,9 @@
 .numberButton {
     width: 30px;
     height: 30px;
+    display: inline-block;
     text-align: center;
     vertical-align: middle;
-    display: inline-block;
     margin: 10px;
     padding-left: auto;
     padding-right: auto;
@@ -19,4 +19,10 @@
 
 .groupField {
     display: inline-block;
+}
+
+.groupBox {
+    display: inline-block;
+    width: 150px;
+    vertical-align: text-top;
 }
