@@ -1,14 +1,33 @@
 
 var i;
 var groupSet;
-var groupArray;
+var numNums = 5;
 var cohort = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne",
     "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve",
     "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
 
+$(document).ready(function () {
+    for (i = 2; i < numNums + 2; i++) {
+        $(".buttonField").append("<div class='numberButton' id='number" + i + "'>" + i + "</div>");
+        $(".groupField").append("<div class='groupBox' id='group" + i + "'></div>");
+        }
+    });
+
+    $(".buttonField").on("click", ".numberButton", function() {
+        console.log($(this) + "button click worked");
+        for (i = 2; i < numNums + 2; i++) {
+            if ($(this).attr('id').indexOf(i) != -1) {
+                console.log("Holy shit this actually worked for " + i);
+                makeTeams(cohort, i);
+            }
+        }
+
+
+    /* if($('#mytable td:last-child').attr('id').indexOf('d') != -1) {
+     alert('found!');
+     }*/
 function makeTeams(array, numTeams) {
     groupSet = [];
-    groupArray = [];
     array = shuffleArray(array);
     for (i = 0; i < numTeams; i++) {
         groupSet.push([]);
@@ -19,9 +38,6 @@ function makeTeams(array, numTeams) {
     }
     return groupSet;
 }
-console.log(makeTeams(cohort, 4));
-console.log(makeTeams(cohort, 5));
-console.log(makeTeams(cohort, 6));
 
 
 //shuffleArray function: implementation of Fisher-Yates shuffle algorithm
@@ -43,3 +59,5 @@ function shuffleArray(array) {
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (1 + max - min) + min);
 }
+
+});

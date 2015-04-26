@@ -1,0 +1,22 @@
+.buttonField {
+     display: inline-block;
+ }
+
+.numberButton {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 10px;
+    padding-left: auto;
+    padding-right: auto;
+    background-color: #008b8b;
+    color: #ffffff;
+    font-size: 22px;
+    border-radius: 3px;
+}
+
+.groupField {
+    display: inline-block;
+}
