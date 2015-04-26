@@ -32,6 +32,7 @@ $(document).ready(function () {
         for (i = 0; i < numTeams; i++) {
             groupSet.push([]);
             $(".groupField").append("<div class='groupBox' id='group" + i + "'></div>");
+            $('#group' + i).append("<div class='groupTitle'>Group " + (i + 1) + "</div>");
         }
         for (i = 0; i < array.length; i++) {
             cohortIndex = i % numTeams;
