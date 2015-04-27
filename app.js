@@ -11,15 +11,14 @@ var pplSelected;
  }*/
 
 $(document).ready(function () {
-    $('.selectorField').on("click", ".selector", function() {
+    $(".selectorField").on("click", ".selector", function() {
         //adjust selected classes
         $(this).siblings().removeClass("chosenSelector");
         $(this).addClass("chosenSelector");
-        //clear any exsting groups/number selection
+        //clear any existing groups/number selection
         $("#groupsHeader").hide();
         $(".groupField").empty();
         $(".buttonField").children().removeClass("chosenNumber");
-        console.log($(".buttonfield"))
         //Check button id, adjust groupAdjustor accordingly (1 for groups, calculate # groups from # people otherwise)
         if ($(this).attr('id').indexOf("numPpl") != -1) {
             pplSelected = true;
@@ -27,10 +26,30 @@ $(document).ready(function () {
         }
     });
 
+    $(".buttonField").on("mouseenter", ".numberButton", function(){
+            //console.log("the mousenter is working at all");
+            $(this).addClass("numberHover");
+            /*$(this).animate({
+                boxShadow:'2px 3px #27496d',
+                backgroundColor:''}, "slow");*/
+        });
+    $('.buttonField').on("mouseleave", ".numberButton", function(){
+            //console.log("the mouseleave is working at all");
+            $(this).removeClass("numberHover");
+            //$(this).animate({boxShadow:'2px 3px #27496d', marginRight:'10px'}, "slow");
+        });
+    $(".selectorField").on("mouseenter", ".selector", function(){
+        //console.log("the selector mousenter is working at all");
+        $(this).addClass("selectorHover");
+    });
+    $(".selectorField").on("mouseleave", ".selector", function(){
+        //console.log("the selector mouseleave is working at all");
+        $(this).removeClass("selectorHover");
+    });
+
     for (i = 2; i < topNum + 1; i++) {
         $(".buttonField").append("<div class='numberButton' id='number" + i + "'>" + i + "</div>");
     }
-
 
     $(".buttonField").on("click", ".numberButton", function() {
 
@@ -39,7 +58,6 @@ $(document).ready(function () {
             if ($(this).attr('id').indexOf(k) != -1) {
                 $(this).siblings().removeClass("chosenNumber");
                 $(this).addClass("chosenNumber");
-                console.log("Holy shit this actually worked for " + k);
                 if (pplSelected) {
                     numGroups = Math.ceil(cohort.length / k);
                     console.log("numGroups adjusted")
@@ -48,7 +66,7 @@ $(document).ready(function () {
                 }
                 console.log("Number of groups: " + numGroups);
                 makeTeams(cohort, numGroups);
-                console.log("Group array: ", groupSet)
+                console.log("Group array: ", groupSet);
             }
         }
     });
@@ -60,7 +78,6 @@ $(document).ready(function () {
         array = shuffleArray(array);
         for (i = 0; i < numTeams; i++) {
             groupSet.push([]);
-            //
             $(".groupField").append("<div style='display: none' class='groupBox' id='group" + i + "'></div>");
             $('#group' + i).append("<div class='groupTitle'>Group " + (i + 1) + "</div>");
         }
@@ -91,10 +108,4 @@ $(document).ready(function () {
         }
         return array;
     }
-
-//random integer function provided by Scott Bromander
-    function randomNumber(min, max) {
-        return Math.floor(Math.random() * (1 + max - min) + min);
-    }
-
 });
