@@ -72,8 +72,8 @@ $(document).ready(function () {
             for (j = 0; j < groupSet[i].length; j++) {
                 $('#group' + i).append("<p>" + groupSet[i][j] + "</p>");
             }
-            $("#groupsHeader").slideDown(500);
-            $('#group' + i).slideDown(500);
+            $("#groupsHeader").slideDown(300);
+            $('#group' + i).slideDown(300);
         }
     }
 
