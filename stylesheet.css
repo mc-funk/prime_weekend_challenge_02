@@ -1,3 +1,8 @@
+.div {
+    display: block;
+    float: left;
+}
+
 body {
     font-family: 'Oxygen', sans-serif;
     margin-left: auto;

@@ -12,6 +12,7 @@ var pplSelected;
 
 $(document).ready(function () {
     $(".selectorField").on("click", ".selector", function() {
+        pplSelected = false;
         //adjust selected classes
         $(this).siblings().removeClass("chosenSelector");
         $(this).addClass("chosenSelector");
